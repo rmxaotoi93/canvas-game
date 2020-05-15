@@ -1,0 +1,8 @@
+canvas{
+    float: right;
+
+}
+body{
+    display: flex;
+    justify-content: space-between;
+}
