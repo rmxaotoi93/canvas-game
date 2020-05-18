@@ -121,6 +121,7 @@ function setupKeyboardListeners() {
  *  
  *  If you change the value of 5, the player will move at a different rate.
  */
+
 let update = function () {
   // Update the time.
   if(gameOver){
@@ -223,59 +224,6 @@ let update = function () {
   
 };
 
-
-/**
- * This function, render, runs as often as possible.
- */
-
-var render = function () {
-  thiefReady2 = false
-  if (bgReady) {
-    ctx.drawImage(bgImage, 0, 0);
-  }
-  if (heroReady) {
-    ctx.drawImage(heroImage, heroX, heroY);
-  }
-  if (monsterReady) {
-    ctx.drawImage(monsterImage, monsterX, monsterY);
-  }
-  if (thiefReady) {
-    ctx.drawImage(thiefImage, thiefX, thiefY);
-  }
-  if(score >=5){
-    thiefReady2 = true
-  }
-  if(thiefReady2){
-    ctx.drawImage(thiefImage2, thiefX2, thiefY2);
-    
-  }
-  ctx.font = "18px Verdana";
-  ctx.fillText(`Time Remaining: ${SECONDS_PER_ROUND - elapsedTime}`, 20, 50);
-  ctx.fillText(`Score: ${score}`, 20, 80);
-  ctx.fillText(`Level: ${stage}`, 20, 110);
-  ctx.fillStyle = "white"
-};
-
-
-/**
- * The main game loop. Most every game will have two distinct parts:
- * update (updates the state of the game, in this case our hero and monster)
- * render (based on the state of our game, draw the right things)
- */
-function namePlayer(){
-  name = document.getElementById("namePlayer").value;
-  document.getElementById("showName").innerHTML = `Your name: ${name}`
-  document.getElementById("namePlayer").value = ""
-  
-}
-var main = function () {
-  update(); 
-  render();
-  // Request to do this again ASAP. This is a special method
-  // for web browsers. 
-  requestAnimationFrame(main);
-};
-
 function reset(){
   
   heroX = canvas.width / 2;
@@ -290,12 +238,78 @@ function reset(){
   }
   startTime = Date.now();
   //SECONDS_PER_ROUND = 10; // error happen cz its define with const 
-  elapsedTime = 0;
+
   score = 0;
   stage = 1;
   gameOver=false;
 
+  thiefX = Math.floor(Math.random()*(canvas.width-32)) 
+  thiefY = Math.floor(Math.random()*(canvas.height-32))
+
+  thiefX2 = Math.floor(Math.random()*(canvas.width-32)) 
+  thiefY2 = Math.floor(Math.random()*(canvas.height-32))
+  
+  history.unshift(name)
+  document.getElementById("history").innerHTML = `Last player: ${history}`
+
+  if(history.length == 4){
+    history.pop();
+    
+  }
+  document.getElementById("history").innerHTML = `Last player: ${history}`
 }
+
+
+/**
+ * This function, render, runs as often as possible.
+ */
+thiefReady2 = false
+var render = function () {
+
+  if (bgReady) {
+    ctx.drawImage(bgImage, 0, 0);
+  }
+  if (heroReady) {
+    ctx.drawImage(heroImage, heroX, heroY);
+  }
+  if (monsterReady) {
+    ctx.drawImage(monsterImage, monsterX, monsterY);
+  }
+  if (thiefReady) {
+    ctx.drawImage(thiefImage, thiefX, thiefY);
+  }
+  if(score >=5){
+    ctx.drawImage(thiefImage2, thiefX2, thiefY2);
+    thiefReady2 = true;
+  }
+  
+  ctx.font = "18px Verdana";
+  ctx.fillText(`Time Remaining: ${SECONDS_PER_ROUND - elapsedTime}`, 20, 50);
+  ctx.fillText(`Score: ${score}`, 20, 80);
+  ctx.fillText(`Level: ${stage}`, 20, 110);
+  ctx.fillStyle = "white"
+};
+function namePlayer(){
+  name = document.getElementById("namePlayer").value;
+  document.getElementById("showName").innerHTML = `Your name: ${name}`
+  document.getElementById("namePlayer").value = ""
+  
+}
+
+/**
+ * The main game loop. Most every game will have two distinct parts:
+ * update (updates the state of the game, in this case our hero and monster)
+ * render (based on the state of our game, draw the right things)
+ */
+
+var main = function () {
+  update(); 
+  render();
+  // Request to do this again ASAP. This is a special method
+  // for web browsers. 
+  requestAnimationFrame(main);
+};
+
 
 // Cross-browser support for requestAnimationFrame.
 // Safely ignore this line. It's mostly here for people with old web browsers.
@@ -303,9 +317,9 @@ var w = window;
 requestAnimationFrame = w.requestAnimationFrame || w.webkitRequestAnimationFrame || w.msRequestAnimationFrame || w.mozRequestAnimationFrame;
 
 // Let's play this game!
-
 loadImages();
-setupKeyboardListeners();
-main();
+  setupKeyboardListeners();
+  main();
+
 
 
