@@ -1,8 +1,49 @@
 canvas{
     float: right;
+    margin: 60px 100px 0 0;
 
 }
 body{
     display: flex;
     justify-content: space-between;
+    background-image: url("https://i.pinimg.com/originals/03/4b/58/034b588b27ec7bc95cb7cb072da3fc60.png");
+    color: antiquewhite;;
+}
+.box{
+    margin: 80px 0 0 80px;
+}
+#namePlayer{
+   margin: 30px 0 0 100px;
+}
+input{
+    width: 300px;
+    height: 50px;
+}
+.title {
+    font-family: 'Indie Flower', cursive;;
+    color: antiquewhite;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+#history{
+    margin: 15px 0;
+    text-align: center;
+}
+.box h3{
+    margin: 15px 0;
+    text-align: center;
+}
+.box p{
+    padding-left: 100px;
+    width: 500px;
+    margin: 15px 0;
+    
+}
+.center{
+    margin-top: 50px;
+    margin-left: 100px;
+    width: 400px;
+    color: yellow;
+    font-weight: 450;
+    letter-spacing: 2px;
 }
