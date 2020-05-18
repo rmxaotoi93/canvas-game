@@ -2,24 +2,34 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Transporter Game</title>
+    <title>Puppy Feed</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
     <div class="box">
-      <h1>Input Your Name</h1>
-      <input id="namePlayer">
-      <button onclick="namePlayer()">Submit</button>
-      <h3 id="high-score"></h3>
-      <h6 id="showName"></h6>
+      <h1 class="text-center title">Puppy puppy</h1>
       
+      <input id="namePlayer">
+      <button onclick="namePlayer()" >Input your name</button>
+      <div><h4 id="history"></h4></div>
+      
+      <div><h3 id="high-score"></h3></div>
+      <div><h6 id="showName"></h6></div>
+  
+      <h3 style="color: rgb(212, 67, 67);">Instruction:</h3>
+      <p>Your misson is fingding food for a cute puppy, <br>You will +1 point for each finded food.<br>Important: An angry man and monster try to catch the puppt so try to avoid them while you're doing mission</p>
       
       <div>
-        <button onclick="reset()">Reset</button>
+        <button onclick="reset()" class="btn btn-primary center">Reset</button>
       </div>
+      
     </div>
 
-
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="game.js"></script>
   </body>
 </html>
